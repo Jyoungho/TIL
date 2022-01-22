@@ -7,11 +7,9 @@ public class SelectionSort {
 
     public ArrayList<Integer> sort(ArrayList<Integer> data) {
         for (int i = 0; i < data.size() - 1; i++) {
-            int min = data.get(i);
             int minIndex = i;
             for (int j = i + 1; j < data.size(); j++) {
-                if (data.get(j) <= min) {
-                    min = data.get(j);
+                if (data.get(j) <= data.get(minIndex)) {
                     minIndex = j;
                 }
             }
