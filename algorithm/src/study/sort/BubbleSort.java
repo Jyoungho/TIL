@@ -6,7 +6,7 @@ import java.util.Collections;
 public class BubbleSort {
 
     public ArrayList<Integer> sort(ArrayList<Integer> data) {
-        for (int i = 0; i < data.size(); i++) {
+        for (int i = 0; i < data.size() - 1 ; i++) {
             boolean swaped = false;
             for (int j = 0; j < data.size() - 1 - i; j++) {
                 if (data.get(j) > data.get(j + 1)) {
