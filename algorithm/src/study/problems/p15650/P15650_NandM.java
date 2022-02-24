@@ -1,11 +1,11 @@
-package study.problems;
+package study.problems.p15650;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class P15650_NandMUnique {
+public class P15650_NandM {
     public static void main(String[] args) {
-        P15650_NandMUnique p15650_nandM = new P15650_NandMUnique();
+        P15650_NandM p15650_nandM = new P15650_NandM();
 
         p15650_nandM.input();
         // 1 번째 원소부터 M 번째 원소를 조건에 맞는 모든 방법을 찾아줘
@@ -33,19 +33,10 @@ public class P15650_NandMUnique {
             sb.append('\n');
         } else {
             for (int cand = 1; cand <= N; cand++) {
-                boolean isUsed = false;
-                for (int i = 0; i < k; i++) {
-                    if (cand == selected[i]) {
-                        isUsed = true;
-                        break;
-                    }
-                }
-                // k 번째에 cand 가 올 수 있으면
-                if (!isUsed) {
-                    selected[k - 1] = cand;
-                    rec_func(k + 1);
-                    selected[k - 1] = 0;
-                }
+                // k 번째에 cand 가 올 수 있으면,
+                selected[k - 1] = cand;
+                rec_func(k + 1);
+                selected[k - 1] = 0;
             }
         }
     }
