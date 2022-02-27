@@ -1,4 +1,4 @@
-package study.problems.p14888;
+package study.problems.bruteforce.p14888;
 
 import java.io.*;
 import java.util.*;

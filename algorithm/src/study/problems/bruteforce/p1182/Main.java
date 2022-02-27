@@ -1,4 +1,4 @@
-package study.problems.p9663;
+package study.problems.bruteforce.p1182;
 
 import java.io.*;
 import java.util.StringTokenizer;
@@ -9,46 +9,37 @@ public class Main {
 
     static void input() {
         N = scan.nextInt();
-        selected = new int[N + 1];
+        S = scan.nextInt();
+        nums = new int[N + 1];
+        for (int i = 1; i <= N; i++) {
+            nums[i] = scan.nextInt();
+        }
+        selectedNumber = new int[N + 1];
     }
 
-    static int N;
-    static int ans;
-    static int[] selected;
+    static int N, S, result;
+    static int[] nums;
+    static int[] selectedNumber;
+
 
     public static void main(String[] args) {
         input();
-        // 백트래킹 함수
-        rec_func(1);
-        System.out.println(ans);
-    }
 
-    static void rec_func(int row) {
-        if (row == N + 1) {
-            ans++;
-        } else {
-            for (int col = 1; col <= N; col++) {
-                boolean possible = true;
-                for (int row2 = 1; row2 <= row - 1; row2++){
-                    if (attackable(row, col, row2, selected[row2])) {
-                        possible = false;
-                        break;
-                    }
-                }
-                if (possible) {
-                    selected[row] = col;
-                    rec_func(row + 1);
-                    selected[row] = 0;
-                }
-            }
+        // 완전 탐색함수
+        rec_func(1, 0);
+        if (S == 0) {
+            result--;
         }
+        System.out.println(result);
     }
 
-    static boolean attackable(int row1, int col1, int row2, int col2) {
-        if (col1 == col2) return true;
-        if (row1 + col1 == row2 + col2) return true;
-        if (row1 - col1 == row2 - col2) return true;
-        return false;
+    static void rec_func(int k, int value) {
+        if (k == N + 1) {
+            if (value == S) result++;
+        } else {
+            rec_func(k + 1, value + nums[k]);
+            rec_func(k + 1, value);
+        }
     }
 
     static class FastReader {

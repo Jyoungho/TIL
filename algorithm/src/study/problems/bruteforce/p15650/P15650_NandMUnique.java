@@ -1,4 +1,4 @@
-package study.problems.p15650;
+package study.problems.bruteforce.p15650;
 
 import java.io.*;
 import java.util.StringTokenizer;

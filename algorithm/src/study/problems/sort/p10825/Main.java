@@ -1,4 +1,4 @@
-package study.problems.p10825;
+package study.problems.sort.p10825;
 
 import java.io.*;
 import java.util.Arrays;
