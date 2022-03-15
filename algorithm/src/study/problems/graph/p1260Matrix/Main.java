@@ -1,4 +1,4 @@
-package study.problems.graph.p1260;
+package study.problems.graph.p1260Matrix;
 
 import java.io.*;
 import java.util.LinkedList;
