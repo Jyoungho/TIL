@@ -34,7 +34,6 @@ public class Main {
         // 모든 물의 위치를 Q에 전부 넣어주기!
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                // dist_water 와 visit 배열 초기화
                 dist_water[i][j] = -1;
                 visit[i][j] = false;
                 if (a[i].charAt(j) == '*') {
@@ -48,13 +47,13 @@ public class Main {
 
         // BFS 과정 시작
         while (!Q.isEmpty()) {
-            int x = Q.poll(), y = Q.poll();
+            int x = Q.poll();
+            int y = Q.poll();
             for (int k = 0; k < 4; k++) {
-                int nx = x + dir[k][0];
-                int ny = y + dir[k][1];
-                if (nx < 0 || ny < 0 || nx >= N || ny <= M) continue;
-                if (a[nx].charAt(ny) != '.') continue;
-                if (visit[nx][ny]) continue;
+                int nx = x + dir[k][0], ny = y + dir[k][1];
+                if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;  // 지도를 벗어나는 곳으로 가는가?
+                if (a[nx].charAt(ny) != '.') continue;  // 갈 수 있는 칸인지 확인해야 한다.
+                if (visit[nx][ny]) continue;  // 이미 방문한 적이 있는 곳인가?
                 Q.add(nx);
                 Q.add(ny);
                 visit[nx][ny] = true;
