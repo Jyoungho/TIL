@@ -68,8 +68,8 @@ public class Main {
         while (!pq.isEmpty()) {
             Info info = pq.poll();
 
-            // 꺼낸 정보가 최신 정보랑 다르면, 의미없이 낡은 정보이므로 폐기한다.
-            if (dist[info.idx] != info.dist) continue;
+            // 최단거리보다 큰 값이면 건너뛴다.
+            if (dist[info.idx] < info.dist) continue;
 
             // 연결된 모든 간선들을 통해서 다른 정점들에 대한 정보를 갱신해준다.
             for (Edge e : edges[info.idx]) {
