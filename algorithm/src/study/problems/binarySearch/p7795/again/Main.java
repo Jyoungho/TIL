@@ -34,17 +34,27 @@ public class Main {
     }
 
     static void pro(){
-        Arrays.sort(A, 1, N + 1);
         Arrays.sort(B, 1, M + 1);
         int ans = 0;
         for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= M; j++) {
-                if (A[i] > B[j]) {
-                    ans++;
-                }
-            }
+            // A[i] 를 선택했을 때, B 에서는 A[i]보다 작은 게 몇 개나 있는 지 count하기
+            ans += lower_bound(B, 1, M, A[i]);
         }
         System.out.println(ans);
+    }
+
+    static int lower_bound(int[] arr, int L, int R, int X) {
+        int res = L - 1;
+        while (L <= R) {
+            int mid = (L + R) / 2;
+            if (arr[mid] < X) {
+                res = mid;
+                L = mid + 1;
+            } else {
+                R = mid - 1;
+            }
+        }
+        return res;
     }
 
     static class FastReader {
