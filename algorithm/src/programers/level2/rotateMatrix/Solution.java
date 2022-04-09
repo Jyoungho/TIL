@@ -42,9 +42,9 @@ public class Solution {
         return min;
     }
 
-    public static void main(String[] args) {
-        Solution s = new Solution();
-        System.out.println(Arrays.toString(s.solution(6, 6, new int[][]{{2, 2, 5, 4}, {3, 3, 6, 6}, {5, 1, 6, 3}})));
-    }
+//    public static void main(String[] args) {
+//        Solution s = new Solution();
+//        System.out.println(Arrays.toString(s.solution(6, 6, new int[][]{{2, 2, 5, 4}, {3, 3, 6, 6}, {5, 1, 6, 3}})));
+//    }
 
 }
