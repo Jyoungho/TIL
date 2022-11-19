@@ -20,7 +20,6 @@ for i in range(n - 2):
         elif total > 0:
             right -= 1
         else:
-            print(*result)
-            sys.exit(0)
+            break
 
 print(*result)
