@@ -1,6 +1,6 @@
 mod = 10**9 + 7
 
-def pow(a,b):
+def recur_pow(a,b):
   res = 1
   while b:
     if b & 1:
@@ -16,4 +16,4 @@ for _ in range(int(input())):
   if N == 1:
     print(1)
   else:
-    print(pow(2,N-2))
+    print(recur_pow(2,N-2))
