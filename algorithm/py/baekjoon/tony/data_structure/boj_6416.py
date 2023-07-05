@@ -7,7 +7,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.child = None
-        self.parant = None
+        self.parent = None
 
     def __str__(self):
         return str(self.data)
@@ -47,13 +47,13 @@ def soluction():
                 node_dict[a].child = [b]
             if b in node_dict:
                 # 부모가 2명(들어오는 간선의 수가 2개이면 안된다.)일 순 없다
-                if node_dict[b].parant == None:
-                    node_dict[b].parant = a
+                if node_dict[b].parent == None:
+                    node_dict[b].parent = a
                 else:
                     answer = False
             else:
                 node_dict[b] = Node(b)
-                node_dict[b].parant = a
+                node_dict[b].parent = a
                 node_dict[b].child = []
     #  공배열도 트리이다.
     if len(node_dict) == 0:
@@ -62,7 +62,7 @@ def soluction():
         return answer
     #  루트 노드 찾기 and 부모가 없는 노드가 2개이면 한개의 트리가 아니다.
     for v in node_dict.values():
-        if v.parant == None:
+        if v.parent == None:
             if root == None:
                 root = v.data
             else:
