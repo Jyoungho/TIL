@@ -33,8 +33,40 @@ package programers.hash
 //장르 별로 가장 많이 재생된 노래를 최대 두 개까지 모아 베스트 앨범을 출시하므로 2번 노래는 수록되지 않습니다.
 //※ 공지 - 2019년 2월 28일 테스트케이스가 추가되었습니다.
 
+//dict_by_genre = {}
+//for i in range(len(genres)):
+//if dict_by_genre.get(genres[i]) is None:
+//dict_by_genre[genres[i]] = {
+//    "items": [(i, plays[i])],
+//    "total": plays[i]
+//}
+//else:
+//dict_by_genre[genres[i]]["items"].append((i, plays[i]))
+//dict_by_genre[genres[i]]["total"] += plays[i]
+//sorted_dict = sorted(dict_by_genre.items(), key=lambda x: x[1]["total"], reverse=True)
+//
+//answer = []
+//for k, v in sorted_dict:
+//answer.extend([item[0] for item in sorted(v["items"], key=lambda x: (-x[1], x[0]))[:2]])
+//
+//return answer
+
+
 class BestAlbum {
     fun solution(genres: Array<String>, plays: IntArray): IntArray {
-        return intArrayOf()
+        return genres.indices.groupBy { genres[it] }
+            .toList()
+            .sortedByDescending { it.second.sumOf { plays[it] } }
+            .map {it.second.sortedByDescending { plays[it] }.take(2)}
+            .flatten()
+            .toIntArray()
     }
 }
+
+//fun main() {
+//    val bestAlbum = BestAlbum()
+//    val genres = arrayOf("classic", "pop", "classic", "classic", "pop")
+//    val plays = intArrayOf(500, 600, 150, 800, 2500)
+//    val result = bestAlbum.solution(genres, plays)
+//    println(result.joinToString(", "))
+//}
